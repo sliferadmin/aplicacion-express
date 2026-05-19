@@ -15,6 +15,19 @@ app.get('/', (c) => {
     return c.json({ status: 'ok' })
 })
 
+// Endpoint GET para obtener tareas
+app.get('/todos', (c) => {
+
+    // Consulta todos los registros
+    const todos =
+        db.query('SELECT * FROM todos').all()
+
+    // Regresa JSON
+    return c.json(todos)
+
+})
+
+
 app.post('/login', async (c) => {
     return c.json({ status: 'ok' })
 })
