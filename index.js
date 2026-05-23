@@ -41,7 +41,14 @@ app.post('/insert', async (c) => {
         return c.json({ error: err.message }, 500)
     }
 })
+// LEER TODAS LAS TAREAS
+app.get('/todos', (c) => {
+    const todos = db.prepare(
+        'SELECT * FROM todos'
+    ).all()
 
+    return c.json(todos)
+})
 export { app, db }
 
 export default {
